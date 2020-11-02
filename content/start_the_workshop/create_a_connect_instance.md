@@ -1,6 +1,6 @@
 +++
 title = "Create an Amazon Connect Instance"
-weight = 23
+weight = 21
 +++
 
 
@@ -19,26 +19,26 @@ When configuring an Amazon Connect Instance you will need to configure 4 key ele
 
 In this workshop we are going to select SAML 2.0 based authentication for our Amazon Connect Instance. This feature enables you to use your organiztions existing Identity Provider for authentication. 
 
-{{% notice tip %}}
+{{% notice info %}}
 Once you choose your Identity management system and create the Instance this configuration cannot be changed. Carefully plan your identity managment design before creating your Instance. As a best practice we recommend using SAML integration for identity management.
 {{% /notice %}}
 
-Select the radio button for SAML 2.0-based authentication and the fill in the Access URL box with a name for your Instance. The name must be unique and cannot be changed after configuration of the Instance is complete. In this example we are using aws-connect-workshop-123, and you can use the same convention just append a random 4 digit number to the end of the name.
+Select the radio button for SAML 2.0-based authentication and the fill in the Access URL box with a name for your Instance. The name must be unique and cannot be changed after configuration of the Instance is complete. In this example we are using *aws-connect-workshop-123*, and you can use the same convention just append a random 4 digit number to the end of the name:
 
 ![CreateConnectInstance](/images/create-a-connect-instance/identity_management.png)
 
 
-Next we will configure an Administrator Account that can be used for accessing the Amazon Connect Console. Provide the firstname, lastname, and username for the admin user. The login is case sensitive.
-Click **Next Step**
+Next we will configure an Administrator Account that can be used for accessing the Amazon Connect Console. Provide the *First Name*, *Last Name*, and *User Name* for the admin user. Note that the login is case sensitive.
+Click **Next Step**:
 
 ![CreateConnectInstance](/images/create-a-connect-instance/administrator.png)
 
-Now we will configure Telephony Options for your Connect Instance. Amazon Connect offers the ability to accept inbound calls, make outbound calls, or both. We will leave the default here to allow both incoming and outbound calls. Click **Next Step**
+Now we will configure Telephony Options for your Connect Instance. Amazon Connect offers the ability to accept inbound calls, make outbound calls, or both. We will leave the default here to allow both incoming and outbound calls. Click **Next Step**:
 
 ![CreateConnectInstance](/images/create-a-connect-instance/telephony_options.png)
 
 
-Now we will configure Data Storage Options for Amazon Connect. Amazon Connect uses **S3** to store data such as Call Recordings, Chat Transcripts, and Reports. Amazon Connect uses **CloudWatch** to store log data.
+Now we will configure Data Storage Options for Amazon Connect. Amazon Connect uses **Amazon S3** to store data such as Call Recordings, Chat Transcripts, and Reports. Amazon Connect uses **CloudWatch** to store log data:
 
 ![CreateConnectInstance](/images/create-a-connect-instance/data_storage.png)
 
@@ -47,10 +47,10 @@ Click **Customize Settings**: on the Data storage condfiguration page. This will
 ![CreateConnectInstance](/images/create-a-connect-instance/data_storage_customization.png)
 
 {{% notice tip %}}
-Customers can bring their own KMS key for encrypting data in S3. 
+Note that in this screen you will be able to pick different KMS keys to encrypt call recordings, chat transcripts and exported reports. By default, it uses the aws/connect key but customers can bring their own KMS keys for encryption. 
 {{% /notice %}}
 
-Now we will review the configuration setting for our Instance. Click **Create Instance**
+In the next page, we will review the configuration settings for our Instance. Click **Create Instance** to start the provioning of your Amazon Connect instance:
 
 ![CreateConnectInstance](/images/create-a-connect-instance/review_create_instance.png)
 
@@ -62,7 +62,7 @@ You will be brought the Amazon Connect console. Click **Lets Go** to begin confi
 
 ![CreateConnectInstance](/images/create-a-connect-instance/getting_started_with_connect.png)
 
-{{% notice tip %}}
+{{% notice warning %}}
 Make sure to click Allow on the browser window requesting access to your microphone.
 {{% /notice %}}
 
@@ -76,13 +76,13 @@ Select a number for the appropriate country, use a direct dial number, and pick 
 
 ![CreateConnectInstance](/images/create-a-connect-instance/claim_phone_number.png)
 
-{{% notice tip %}}
+{{% notice info %}}
 If you do not see a number you require for your production Instance open a Support Request with AWS support to check on the availability of numbers you are looking for. This could be for example a certain area code where you do business.
 {{% /notice %}}
 
-Click **Next**
+After selecting your phone number, click in **Next**
 
-Wait a couple of minutes for the new number to be configured in your Instance. The next screen is going to show you the number to call and show the **Contact Control Panel** embedded in the page. The **Contact Control Panel** is the Agents interface to handle incoming Contacts. 
+It might take a couple of minutes for the new number to be configured in your Instance. The next screen is going to show you the number to call and show the **Contact Control Panel** embedded in the page. The **Contact Control Panel** is the Agents interface to handle incoming Contacts. 
 
 ![CreateConnectInstance](/images/create-a-connect-instance/make_a_call.png)
 
