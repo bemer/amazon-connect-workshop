@@ -138,3 +138,28 @@ After filling the user information, select the **Routing profile** and for the s
 ![AddUserInfo](/images/enable-aws-sso/add_user_information.png)
 
 
+In the confirmation screen, click in the **Create users** button.
+
+![CreateUser](/images/enable-aws-sso/create_user.png)
+
+After creating the user in the Connect instance, it is time to provision the user in the SSO. To do so, access the [AWS SSO console](https://console.aws.amazon.com/singlesignon/home#/users) and under the *Users* menu click in the **Add User** button. Then, add information about the new user. Make sure that you are using the **same email address that you used when creating the user in the Connect instance**. After, click in the **Next: Groups** button:
+
+![CreateSsoUser](/images/enable-aws-sso/create_sso_user.png)
+
+To make our life easier, let's now create a group that will be used by all the Connect Agents. To do so, click in the **Create group** button in the top of the screen. Name your group *ConnectAgents* and click in the **Create button**. After creating the group, make sure you have it selected in the Groups screen before clicing in the **Add user** button.
+
+After creating the user and the group, you should get back to the Connect application created in the SSO and allow access to it. To do so, click in the [Applications menu](https://console.aws.amazon.com/singlesignon/home#/applications) on the SSO page and click in the *Amazon Connect* application. There, navigate to the **Assigned users** tab and click in the button **Assign users**:
+
+![AssignSsoUsers](/images/enable-aws-sso/assign_sso_users.png)
+
+Now, select the *Groups* tab, select the *ConnectAgents* group and click in the button **Assign users**:
+
+![AssignUsers](/images/enable-aws-sso/assign_users.png)
+
+By selecting the group there, it will be easier for you to add more agents in your Connect instance in the future, so you don't need to assign every individual user to the Connect application created on the AWS SSO.
+
+When creating the new user, an email will be sent to the email address used with information about the Single Sign-On instance. You will have to click in the **Accept invitation** link, to be redirected to the SSO portal. A password change will be requested and after changing the password, you will be able to login to the SSO and see the Amazon Connect application:
+
+![ConnectSsoApplication](/images/enable-aws-sso/connect_sso_application.png)
+
+When clicking in the Connect application, you will be redirected to the Connect agent interface and will be able to start receiving and answering calls.
