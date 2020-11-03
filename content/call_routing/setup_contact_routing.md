@@ -10,11 +10,7 @@ In this module we are going to setup Contact Routing in Amazon Connect. Amazon C
 - Service
 - Parts
 
-Open the AWS Console and type Connect in the Find Services search box. Select the Amazon Connect Service.
-
-![SetupRouting](/images/setup-contact-routing/open-console.png)
-
-Select the Instance Access URL to bring up the Amazon Connect Login URL.
+Start by accessing the [Amazon Connect console](https://console.aws.amazon.com/connect/home). In the service console, select the Instance Access URL to bring up the Amazon Connect Login URL.
 
 ![SetupRouting](/images/setup-contact-routing/instance-login-url.png)
 

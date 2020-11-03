@@ -1,5 +1,5 @@
 +++
-title = "Configure the IAM"
+title = "Configure the IAM IdP"
 weight = 22
 +++
 
@@ -10,7 +10,7 @@ In the IAM console, in the [Identity providers](https://console.aws.amazon.com/i
 
 ![CreateIdp](/images/enable-aws-sso/create_idp.png)
 
-As the **Provider Type**, select **SAML**, give it the name of **Connect-SSO** and upload the AWS SSO metadata file that you downloaded before from the AWS SSO page:
+As the **Provider Type**, select **SAML**, give it the name of **AmazonConnectAgentAccess** and upload the AWS SSO metadata file that you downloaded before from the AWS SSO page:
 
 ![CreateIdp](/images/enable-aws-sso/iam_create_provider.png)
 
@@ -32,26 +32,26 @@ After creating the Identity Provider, it is time to create a new IAM Policy. To 
         ]
     }
 
-After updating the JSON content, click in **Review policy**. Name your policy **Connect-SSO-Policy** and click in **Create policy**.
+After updating the JSON content, click in **Review policy**. Name your policy **AmazonConnectSSOPolicy** and click in **Create policy**.
 
 Now, let's create an IAM Role that will be used by the federated users so they can access the Amazon Connect instance. You can click in [this link](https://console.aws.amazon.com/iam/home#/roles) to access the IAM Roles menu. Once in the Roles screen, click in the button **Create role**. For the Role type, in the top menu, you should select **SAML 2.0 federation** and use the following configurations:
 
-* For *SAML provider* select **Connect-SSO**
+* For *SAML provider* select **AmazonConnectAgentAccess**
 * Choose **Allow programmatic and AWS Management Console access**
 
 After picking the right configuration, click in **Permissions**:
 
 ![CreateIamRole](/images/enable-aws-sso/create_iam_role.png)
 
-In the *Attach permissions policies* menu, you should select **Connect-SSO-Policy**. You can use the search to filter for this policy. After selecting the policy, click in **Next: Tags**:
+In the *Attach permissions policies* menu, you should select **AmazonConnectSSOPolicy**. You can use the search to filter for this policy. After selecting the policy, click in **Next: Tags**:
 
 ![SelectIamPolicy](/images/enable-aws-sso/select_iam_policy.png)
 
-In the *Add tags (optional)* scree, just click in **Next: Review**. Name your role **Connect-SSO** and click in **Create role**.
+In the *Add tags (optional)* scree, just click in **Next: Review**. Name your role **AmazonConnectAgentAccessRole** and click in **Create role**.
 
 After creating your role, take note of the IAM role ARN. You use it later while configuring the AWS SSO application. For example:
 
-    arn:aws:iam::<account id without hyphen>:role/Connect-SSO
+    arn:aws:iam::<account id without hyphen>:role/AmazonConnectAgentAccessRole
 
 After creating the Identity Provider, IAM policy and IAM Role, it is time to get back to the AWS SSO an nao the attribute values.
 
@@ -66,7 +66,7 @@ Get back to the [AWS SSO console](https://console.aws.amazon.com/singlesignon/ho
 
 The *Value* field will be similar to:
 
-    arn:aws:iam::123456789012:role/Connect-SSO,arn:aws:iam::123456789012:saml-provider/Connect-SSO
+    arn:aws:iam::123456789012:role/AmazonConnectAgentAccessRole,arn:aws:iam::123456789012:saml-provider/AmazonConnectAgentAccess
 
 After adding the new attribute, click in **Save changes**:
 

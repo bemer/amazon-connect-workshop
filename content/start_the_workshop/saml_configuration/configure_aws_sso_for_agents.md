@@ -1,5 +1,5 @@
 +++
-title = "Configure AWS SSO"
+title = "Configure the AWS SSO for Agents"
 weight = 21
 +++
 
@@ -26,11 +26,15 @@ Let's now add the Amazon Connect integration. To do so, you should click in **Ap
 
 ![AddNewApplication](/images/enable-aws-sso/add_new_application.png)
 
+{{% notice info %}}
+Note that you can leverage AWS SSO to handle the authentication for multiple applications. When implementing Amazon Connect, it is a best practice that you create two different applications: one for your Connect agents and another one for the Amazon Connect instance administrators. During this workshop, we will demonstrate how to provision the application that will be used by the connect agents.
+{{% /notice %}}
+
 In the search box, type **Amazon Connect**. It will find the *Amazon Connect* app. You can then click in the application logo and then in the **Add application** button to move to the application configuration page:
 
 ![AmazonConnectApp](/images/enable-aws-sso/amazon_connect_app.png)
 
-In this page, make sure that you download the **AWS SSO SAML metadata file**. You will find a download link just in the **AWS SSO Metadata** section. After downloading the metadata file, go ahead and change the **Relay state** field under **Application Properties**. In this box, please insert the following, making sure that you replace the data with the right AWS region and your Amazon Connect instance ID:
+In this page, name your application **Amazon Connect - Agent** and make sure that you download the **AWS SSO SAML metadata file**. You will find a download link just in the **AWS SSO Metadata** section. After downloading the metadata file, go ahead and change the **Relay state** field under **Application Properties**. In this box, please insert the following, making sure that you replace the data with the right AWS region and your Amazon Connect instance ID:
 
     https://\<region-id>.console.aws.amazon.com/connect/federate/\<instance-id>?destination=%2Fconnect%2Fccp
 
@@ -47,7 +51,7 @@ That being said, since I am running the worshop in *us-east-1*, the URL I'll add
       https://us-east-1.console.aws.amazon.com/connect/federate/9690dd9b-3de7-4097-b4d9-67829f7c8fur?destination=%2Fconnect%2Fccp
 
 
-After downloading the certificate and changing the **Relay state** URL fiel, keep all the rest as default and click in **Save changes**:
+After downloading the metadata file and changing the **Relay state** URL field, keep all the rest as default and click in **Save changes**:
 
-![AmazonConnectApp](/images/enable-aws-sso/amazon_connect_app.png)
+![RelayStateUrl](/images/enable-aws-sso/relay_state_url.png)
 

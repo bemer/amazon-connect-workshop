@@ -1,9 +1,9 @@
 +++
-title = "Create Connect Users"
+title = "Create the first Connect Agent"
 weight = 23
 +++
 
-After configuring the SSO, it is time to go ahead and create some users. With the SSO setup, users are created and defined in the Connect instance but all the password management will happen through the SSO. Let's then create a new user and see how this integration looks like.
+After configuring the SSO, it is time to go ahead and create the firt Amazon Connect agent. With the SSO setup, users are created and defined in the Connect instance but all the password management will happen through the SSO. Let's then create a new user and see how this integration looks like.
 
 The first step here is to access your Amazon Connect instance with your administrator account (that we created in the previous lab) and create a new user. To do so, visit the [Amazon Connect console](https://console.aws.amazon.com/connect/home) and click in the *Access URL*. You will be taken to the Amazon Connect management portal. In this dashboard, click in the *User management* menu in the left side:
 
