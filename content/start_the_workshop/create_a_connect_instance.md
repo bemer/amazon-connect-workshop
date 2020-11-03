@@ -1,6 +1,6 @@
 +++
 title = "Create an Amazon Connect Instance"
-weight = 21
+weight = 10
 +++
 
 
