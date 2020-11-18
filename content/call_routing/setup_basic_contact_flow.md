@@ -6,22 +6,6 @@ weight = 33
 
 In this module we are going to setup an Amazon Connect Contact Flow to greet our customers and route them to the appropriate department.
 
-- Sales
-- Service
-- Parts
-
-Open the AWS Console and type Connect in the Find Services search box. Select the Amazon Connect Service.
-
-![SetupBasicContactFlow](/images/setup-contact-routing/open-console.png)
-
-Select the Instance Access URL to bring up the Amazon Connect Login URL.
-
-![SetupBasicContactFlow](/images/setup-contact-routing/instance-login-url.png)
-
-Enter your username and password for the Instance.
-
-![SetupBasicContactFlow](/images/setup-contact-routing/connect-login.png)
-
 Once you are logged into the Connect Console navigate to the **Routing** menu on the left hand side of the console. Select **Contact Flows** in the Routing Menu
 
 ![SetupBasicContactFlow](/images/setup-basic-contact-flow/contact-flow-menu.png)
