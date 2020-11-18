@@ -3,12 +3,16 @@ title = "Setup Contact Routing in Amazon Connect"
 weight = 31
 +++
 
-
-In this module we are going to setup Contact Routing in Amazon Connect. Amazon Connect uses Queues, Routing Profiles, and, Contact Flows to route contacts to Agents. We are going to build 3 Queues and 3 Routing Profiles to simulate a companies Contact Center.
+In this module we are going to setup Contact Routing in Amazon Connect. Amazon Connect uses Queues, Routing Profiles, and Contact Flows to route contacts to Agents. We are going to build Queues and Routing Profiles to simulate a company's Contact Center with the following departments:
 
 - Sales
 - Service
 - Parts
+
+{{% notice info %}}
+Note that to configure the Amazon Connect instance we will be using the Admin user previously created. Please make sure that you have the admin user properly created and that you are able to access the Amazon Connect instance using the SSO URL.
+{{% /notice %}}
+
 
 Start by accessing the [Amazon Connect console](https://console.aws.amazon.com/connect/home). In the service console, select the Instance Access URL to bring up the Amazon Connect Login URL.
 
