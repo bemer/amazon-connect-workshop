@@ -7,47 +7,41 @@ After configuring the SSO, it is time to go ahead and create the firt Amazon Con
 
 The first step here is to access your Amazon Connect instance with your administrator account (that we created in the previous lab) and create a new user. To do so, visit the [Amazon Connect console](https://console.aws.amazon.com/connect/home) and click in the *Access URL*. You will be taken to the Amazon Connect management portal. In this dashboard, click in the *User management* menu in the left side:
 
-![ConnectUserManagement](/images/enable-aws-sso/user_management.png)
+![ConnectUserManagement](/images/enable-aws-sso/_user_management.png)
 
 In the new screen, click in **Add new users** buton in the top right corner:
 
-![AddNewUsers](/images/enable-aws-sso/add_new_users.png)
+![AddNewUsers](/images/enable-aws-sso/_add_new_users.png)
 
-There are mainly two options to create users in the Amazon Connect instance: manually and upload a template with multiple users. In our case, let's just create a single users that we will use for testing. In the *Add new users* screen, make sure that the option **Create and set up a new user.** is selected and click in **Next**.
+There are mainly two options to create users in the Amazon Connect instance: manually and upload a template with multiple users. For our workshop purposes, we are going to create two different agents, named **agent1** and **agent2**, so go ahead in click in the  In the **Add new users** button on the top right corner of the **User management** screen, make sure that the option **Create and set up a new user.** is selected and click in **Next**:
 
-Enter **Sales** for the First Name and **User** for the last name. Enter **sales@aws-connect-workshop.com** for the Login Name.
-
-After filling the user information, select the **Routing profile** and for the security profile select **Agent**. After filling the user information, click in **Save**:
-
-![AddUserInfo](/images/enable-aws-sso/add_user_information.png)
+![CreateSetupUser](/images/enable-aws-sso/_create_setup_user.png)
 
 
-In the confirmation screen, click in the **Create users** button.
+Enter **Agent** for the First Name and **1** for the last name. Enter **agent1@connect-workshop.com** for the Login Name. After adding this information, select the **Basic Routing Profile** as the *Routing Profile* and **Agent** as the *Security Profiles*. When finishing it, click in the **Save** button on the bottom of the page:
 
-![CreateUser](/images/enable-aws-sso/create_user.png)
+![CreateAgent1](/images/enable-aws-sso/_agent1_creation_connect.png)
 
-After creating the *Sales* user, click in the button **Create more users** and create two more users: one for the **Service**  and another one for the **Parts** departments.
+On the following scree, just click in the **Create users** button:
 
-Once you complete the other 2 agents you user list should look like this.
+![FinishConnectCreateUsers](/images/enable-aws-sso/_finish_connect_create_users.png)
 
-![UsersList](/images/enable-aws-sso/connect_users_list.png)
-
-
-After creating the users in the Connect instance, it is time to provision them in the SSO. To do so, access the [AWS SSO console](https://console.aws.amazon.com/singlesignon/home#/users) and under the *Users* menu click in the **Add User** button. Then, add information about the new user. Make sure that you are using the **same email address that you used when creating the user in the Connect instance**. 
+Now that we have the *aget1* already created in the Amazon Connect instance, it is time to provision it in the SSO. To do so, access the [AWS SSO console](https://console.aws.amazon.com/singlesignon/home#/users) and under the *Users* menu click in the **Add User** button. Then, add information about the new user. Make sure that you are using the **same email address that you used when creating the user in the Connect instance**. 
 
 {{% notice info %}}
 By default, when creating a new user in SSO, the Amazon SSO Service will send an email to the user's email address with login information and asking for a new password. Given that in this workshop we are not using a valid domain name, make sure you are selecting the option **Generate a one-time password that you can share with the user** before creating the user. 
 {{% /notice %}}
 
-After, click in the **Next: Groups** button:
+![AddSsoAgent1](/images/enable-aws-sso/_add_sso_agent1.png)
 
-![CreateSsoUser](/images/enable-aws-sso/create_sso_user.png)
+After filling all the fields, click in the button **Next: Groups** on the bottom of the page. To make our life easier, let's go ahead and create a new group that will allow us to assign the users with the proper permissions on our Amazon Connect instance. To do so, click in the **Create group** button and type **ConnectAgents** as the **Group name**. Add a description about it, and click in **Create**:
 
-To make our life easier, let's now create a group that will be used by all the Connect Agents. To do so, click in the **Create group** button in the top of the screen. Name your group *ConnectAgents* and click in the **Create button**. After creating the group, make sure you have it selected in the Groups screen before clicing in the **Add user** button.
+![SsoCreateAgentsGroup](/images/enable-aws-sso/_sso_create_agent_group.png)
 
-When finishing the user creation, you will be able to get the user password from the screen. Please make sure you copy this information, so you can access the system with this user later:
+The user will be created and you will be able to obtain the generated password by clicking in the **Show password** option. Make sure you copy this field, because it will be used when trying to login via the SSO configuration:
 
-![GetUserPassword](/images/enable-aws-sso/get_user_password.png)
+![AgentUserCreated](/images/enable-aws-sso/_agent_user_created.png)
+
 
 After creating the user and the group, you should get back to the Connect application created in the SSO and allow access to it. To do so, click in the [Applications menu](https://console.aws.amazon.com/singlesignon/home#/applications) on the SSO page and click in the *Amazon Connect* application. There, navigate to the **Assigned users** tab and click in the button **Assign users**:
 
@@ -55,12 +49,12 @@ After creating the user and the group, you should get back to the Connect applic
 
 Now, select the *Groups* tab, select the *ConnectAgents* group and click in the button **Assign users**:
 
-![AssignUsers](/images/enable-aws-sso/assign_users.png)
+![AssignUsers](/images/enable-aws-sso/_assign_users.png)
 
 By selecting the group there, it will be easier for you to add more agents in your Connect instance in the future, so you don't need to assign every individual user to the Connect application created on the AWS SSO.
 
 
-Repeat the steps to create both the **Parts** and the **Service** users in the SSO.
+Repeat the steps to as many users you want in both the Amazon Connect instance and the SSO.
 
 After creating the users, you should be able to access the SSO interface with them. To get the login URL, please go to the [AWS SSO](https://console.aws.amazon.com/singlesignon/home) console. You will find the SSO portal URL under *User portal*.
 
