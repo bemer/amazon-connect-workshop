@@ -26,7 +26,7 @@ On the following scree, just click in the **Create users** button:
 
 ![FinishConnectCreateUsers](/images/enable-aws-sso/_finish_connect_create_users.png)
 
-Now that we have the *aget1* already created in the Amazon Connect instance, it is time to provision it in the SSO. To do so, access the [AWS SSO console](https://console.aws.amazon.com/singlesignon/home#/users) and under the *Users* menu click in the **Add User** button. Then, add information about the new user. Make sure that you are using the **same email address that you used when creating the user in the Connect instance**. 
+Now that we have the *agent1* already created in the Amazon Connect instance, it is time to provision it in the SSO. To do so, access the [AWS SSO console](https://console.aws.amazon.com/singlesignon/home#/users) and under the *Users* menu click in the **Add User** button. Then, add information about the new user. Make sure that you are using the **same email address that you used when creating the user in the Connect instance**. 
 
 {{% notice info %}}
 By default, when creating a new user in SSO, the Amazon SSO Service will send an email to the user's email address with login information and asking for a new password. Given that in this workshop we are not using a valid domain name, make sure you are selecting the option **Generate a one-time password that you can share with the user** before creating the user. 
