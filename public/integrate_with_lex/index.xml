@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Integrate Connect with Lex on Amazon Connect Workshop</title>
+    <link>/integrate_with_lex/</link>
+    <description>Recent content in Integrate Connect with Lex on Amazon Connect Workshop</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="/integrate_with_lex/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Configure the Amazon Connect instance</title>
+      <link>/integrate_with_lex/configure_connect_instance/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/integrate_with_lex/configure_connect_instance/</guid>
+      <description>In order to be able to connect the Amazon Connect instance with the Amazon Lex chatbot, the first step is for you to add the Lex bot in the Contact Flows configuration of your Connect Instance. This step basically provides the right permissions so the Connect instance can interact with the Lex bot.
+To do so, click in you Amazon Connect instance on the Amazon Connect console and there, navigate to the Contact flows on the left menu:</description>
+    </item>
+    
+    <item>
+      <title>Configure Queues and Routing Profiles</title>
+      <link>/integrate_with_lex/configure_queues_and_routing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/integrate_with_lex/configure_queues_and_routing/</guid>
+      <description>The next step after adding the Lex bot to the Amazon Connect instance is to configure the Queues and the Routing Profile so the agent previously created will be able to receive calls and chat messages.
+Let&amp;rsquo;s start by creating two different queues: CheckSchedule and TvSignalProblem. To do so, on the left menu click on Queues under the Routing menu:
+On the queues screen, click in Add new queue button on the top right corner of the screen.</description>
+    </item>
+    
+    <item>
+      <title>Configure the Amazon Connect contact flow</title>
+      <link>/integrate_with_lex/configure_call_flow/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/integrate_with_lex/configure_call_flow/</guid>
+      <description>After adding the bot to the Amazon Connect instance, it is time to configure the Contact Flow, so your calls can be handled by the Lex bot. To do so, access your Amazon Connect dashboard - you can do this by using your SSO administration login.
+To make your life easier, insted of creating a contact flow from the scratch, you can just go ahead and download the provided Cable TV Contact flow.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Deploying the Lex Chatbot on Amazon Connect Workshop</title>
+    <link>/deploy_chatbot/</link>
+    <description>Recent content in Deploying the Lex Chatbot on Amazon Connect Workshop</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="/deploy_chatbot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deploy the CloudFormation templates</title>
+      <link>/deploy_chatbot/deploy_backend/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/deploy_chatbot/deploy_backend/</guid>
+      <description>In order to get the Lex Chatbot working properly, we have to deploy the appropriate Lambda Functions and DynamoDB tables. In this workshop we will simulate a Cable TV company that allows customers to call and talk about technical problems. After the customer start talking to the bot, there are a few different options available:
+ If the customer has a problem with a single or a just a few channels, the call is transferred to an agent; If the customer has a problem with all the TV channels, the chatbot will schedule a technical visit; If the customer ask for information about the visit, the chatbot provides it; If the customer wants to cancel or reschedule the technical visit, the bot will do it.</description>
+    </item>
+    
+    <item>
+      <title>Deploy the Lex Chatbot</title>
+      <link>/deploy_chatbot/deploy_lex_chatbot/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/deploy_chatbot/deploy_lex_chatbot/</guid>
+      <description>After deploying the infrastructure with Lambda Functions and DynamoDB tables that will be used by the chatbot, it is time to deploy the chatbot itself. Start by downloading the zip file from this link.
+After downlinad the file, navigate to the Amazon Lex console and on this screen, click in Actions and than in Import:
+Here, select the CableTvLexChatbot.zip file and click in Import:
+After importing the Lex chatbot, we will need to change a few configurations and point it to use the Lambda functions that we just deployed.</description>
+    </item>
+    
+    <item>
+      <title>Testing the Lex Chatbot</title>
+      <link>/deploy_chatbot/testing_the_lex_chatbot/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/deploy_chatbot/testing_the_lex_chatbot/</guid>
+      <description>Now that you have deployed the chatbot, it is time to test it. The first thing we will need is to add some customer data in the CableTvCustomers DynamoDB table. To do so, go to the DynamoDB console and click in the CableTvCustomers table. On the table page, click in the Create Item button:
+On the Create Item page, insert the following JSON document (remember to replace the data with your name and your phone number):</description>
+    </item>
+    
+  </channel>
+</rss>

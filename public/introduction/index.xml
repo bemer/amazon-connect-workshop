@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Introduction on Amazon Connect Workshop</title>
+    <link>/introduction/</link>
+    <description>Recent content in Introduction on Amazon Connect Workshop</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="/introduction/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>What is Amazon Connect</title>
+      <link>/introduction/what_is_amazon_connect/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/introduction/what_is_amazon_connect/</guid>
+      <description>Amazon Connect is an omnichannel cloud contact center. You can set up a contact center in a few steps, add agents who are located anywhere, and start engaging with your customers.
+You can create personalized experiences for your customers using omnichannel communications. For example, you can dynamically offer chat and voice contact, based on such factors as customer preference and estimated wait times. Agents, meanwhile, conveniently handle all customers from just one interface.</description>
+    </item>
+    
+  </channel>
+</rss>

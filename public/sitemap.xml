@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrate_with_lex/configure_connect_instance/</loc>
+  </url>
+  
+  <url>
+    <loc>/start_the_workshop/create_a_connect_instance/</loc>
+  </url>
+  
+  <url>
+    <loc>/deploy_chatbot/deploy_backend/</loc>
+  </url>
+  
+  <url>
+    <loc>/introduction/</loc>
+  </url>
+  
+  <url>
+    <loc>/introduction/what_is_amazon_connect/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrate_with_lex/configure_queues_and_routing/</loc>
+  </url>
+  
+  <url>
+    <loc>/deploy_chatbot/deploy_lex_chatbot/</loc>
+  </url>
+  
+  <url>
+    <loc>/start_the_workshop/saml_configuration/</loc>
+  </url>
+  
+  <url>
+    <loc>/start_the_workshop/</loc>
+  </url>
+  
+  <url>
+    <loc>/start_the_workshop/saml_configuration/configure_aws_sso_for_agents/</loc>
+  </url>
+  
+  <url>
+    <loc>/start_the_workshop/saml_configuration/configure_the_iam/</loc>
+  </url>
+  
+  <url>
+    <loc>/start_the_workshop/saml_configuration/create_connect_agents/</loc>
+  </url>
+  
+  <url>
+    <loc>/start_the_workshop/saml_configuration/configure_aws_sso_for_admins/</loc>
+  </url>
+  
+  <url>
+    <loc>/start_the_workshop/saml_configuration/create_admin_user/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrate_with_lex/configure_call_flow/</loc>
+  </url>
+  
+  <url>
+    <loc>/deploy_chatbot/</loc>
+  </url>
+  
+  <url>
+    <loc>/deploy_chatbot/testing_the_lex_chatbot/</loc>
+  </url>
+  
+  <url>
+    <loc>/integrate_with_lex/</loc>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>/authors/</loc>
+  </url>
+  
+  <url>
+    <loc>/more_resources/</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+  </url>
+  
+</urlset>
