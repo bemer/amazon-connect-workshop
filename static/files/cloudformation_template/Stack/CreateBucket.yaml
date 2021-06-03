@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Lambda function Description.
+Resources:
+  LambdaZipsBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+
+Outputs:
+  BucketName:
+    Value: !Ref LambdaZipsBucket
+    Description: Name of the Amazon S3 bucket

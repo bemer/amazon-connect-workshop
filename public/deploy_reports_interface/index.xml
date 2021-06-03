@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Deploy the reporting interface on Amazon Connect Workshop</title>
+    <link>/deploy_reports_interface/</link>
+    <description>Recent content in Deploy the reporting interface on Amazon Connect Workshop</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="/deploy_reports_interface/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deploy the CloudFormation Template</title>
+      <link>/deploy_reports_interface/deploy_cloudformation_template/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/deploy_reports_interface/deploy_cloudformation_template/</guid>
+      <description>The first thing we are going to do is to deploy a CloudFormation template that will create all the basic resources that you will need to have the reporting platform. It will create a static website hosted in a S3 bucket, a Cognito UserPool that will be used for authentication, the DynamoDB tables, Lambda functions and API Gateways used to access the data and some additional resources needed.
+The CloudFormation template is available in this link.</description>
+    </item>
+    
+    <item>
+      <title>Create a CloudFront distribution</title>
+      <link>/deploy_reports_interface/create_cloudfront_distribution/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/deploy_reports_interface/create_cloudfront_distribution/</guid>
+      <description>In order to serve the content of your newly deployed website, you can be leveraging the S3 bucket static website hosting feature, but a best practice is that you leverage a CloudFront distribution instead. This is going to help you to speed up the delivery of the assets as well as save with data transfer out costs.
+To do so, acces the CloudFront console. In the CloudFront screen, click in the Create Distribution button.</description>
+    </item>
+    
+    <item>
+      <title>Configure Agent Events Stream</title>
+      <link>/deploy_reports_interface/configure_agent_events_stream/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/deploy_reports_interface/configure_agent_events_stream/</guid>
+      <description>Now that we have the web application properly deployed, it is time to configure the Agent Event streams so the Lambda Function can start pulling out this information and updating the database that is accessed by the web application.
+To do so, the first thing to do is creating an Amazon Kinesis stream. Go to the Amazon Kinesis console and on this screen, make sure that the Kinesis Data Streams is selected and click in Create data stream:</description>
+    </item>
+    
+    <item>
+      <title>Configure Queue Stats</title>
+      <link>/deploy_reports_interface/configure_queue_status_crawling/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/deploy_reports_interface/configure_queue_status_crawling/</guid>
+      <description>The final step for us to have all the information being populated in the new interface is to configure the application so it can start obtaining information from the Amazon Connect queues. To do so, the first thing we need to do is to get the Queue ARN from the Amazon Connect instance.
+Access you Amazon Connect instance and navigate to the Queues on the left side menu:
+There, click in the Queue that you want to get metrics.</description>
+    </item>
+    
+    <item>
+      <title>Validating the application</title>
+      <link>/deploy_reports_interface/validating_application/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/deploy_reports_interface/validating_application/</guid>
+      <description>Now that we have completed all the pre-requisites to get the reporting platform working, it is time to valide it&amp;rsquo;s functionality.
+To do so, access the reporting platform web interface, using the CloudFront URL (don&amp;rsquo;t forget to add the /metrics/metrics.html in the end). You will be prompted with a username an password screen. On that, use the following data:
+usernamme: sjobs password: password  After logging in the application, you will be able to see data about your queue and your agents.</description>
+    </item>
+    
+  </channel>
+</rss>

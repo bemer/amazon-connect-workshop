@@ -79,6 +79,30 @@
   </url>
   
   <url>
+    <loc>/deploy_reports_interface/</loc>
+  </url>
+  
+  <url>
+    <loc>/deploy_reports_interface/deploy_cloudformation_template/</loc>
+  </url>
+  
+  <url>
+    <loc>/deploy_reports_interface/create_cloudfront_distribution/</loc>
+  </url>
+  
+  <url>
+    <loc>/deploy_reports_interface/configure_agent_events_stream/</loc>
+  </url>
+  
+  <url>
+    <loc>/deploy_reports_interface/configure_queue_status_crawling/</loc>
+  </url>
+  
+  <url>
+    <loc>/deploy_reports_interface/validating_application/</loc>
+  </url>
+  
+  <url>
     <loc>/categories/</loc>
   </url>
   

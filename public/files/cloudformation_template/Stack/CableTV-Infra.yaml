@@ -1,0 +1,392 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Lambda function Description.
+Parameters:
+  BucketName:
+    Type: String
+    Description: "Type the S3 Bucket Name"
+Resources:
+### Creating DynamoDB Table CableTvCustomers ###
+  CableTvCustomersTable: 
+    Type: AWS::DynamoDB::Table
+    Properties: 
+      AttributeDefinitions: 
+        - 
+          AttributeName: "customerId"
+          AttributeType: "S"
+      KeySchema: 
+        - 
+          AttributeName: "customerId"
+          KeyType: "HASH"
+      ProvisionedThroughput: 
+        ReadCapacityUnits: "1"
+        WriteCapacityUnits: "1"
+      TableName: "CableTvCustomers"
+
+### AutoScaling DynamoDB Throughput ###
+  CustomersWriteCapacity:
+    Type: AWS::ApplicationAutoScaling::ScalableTarget
+    Properties:
+      MaxCapacity: 10
+      MinCapacity: 1
+      ResourceId: !Join
+        - /
+        - - table
+          - !Ref CableTvCustomersTable
+      RoleARN: !GetAtt ScalingRole.Arn
+      ScalableDimension: dynamodb:table:WriteCapacityUnits
+      ServiceNamespace: dynamodb
+  CustomersReadCapacity:
+    Type: AWS::ApplicationAutoScaling::ScalableTarget
+    Properties:
+      MaxCapacity: 10
+      MinCapacity: 1
+      ResourceId: !Join
+        - /
+        - - table
+          - !Ref CableTvCustomersTable
+      RoleARN: !GetAtt ScalingRole.Arn
+      ScalableDimension: dynamodb:table:ReadCapacityUnits
+      ServiceNamespace: dynamodb
+  ScalingRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          -
+            Effect: "Allow"
+            Principal:
+              Service:
+                - application-autoscaling.amazonaws.com
+            Action:
+              - "sts:AssumeRole"
+      Path: "/"
+      Policies:
+        -
+          PolicyName: "root"
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              -
+                Effect: "Allow"
+                Action:
+                  - "dynamodb:DescribeTable"
+                  - "dynamodb:UpdateTable"
+                  - "cloudwatch:PutMetricAlarm"
+                  - "cloudwatch:DescribeAlarms"
+                  - "cloudwatch:GetMetricStatistics"
+                  - "cloudwatch:SetAlarmState"
+                  - "cloudwatch:DeleteAlarms"
+                Resource: "*"
+  CustomerWriteScalingPolicy:
+    Type: AWS::ApplicationAutoScaling::ScalingPolicy
+    Properties:
+      PolicyName: CustomerWriteAutoScalingPolicy
+      PolicyType: TargetTrackingScaling
+      ScalingTargetId: !Ref CustomersWriteCapacity
+      TargetTrackingScalingPolicyConfiguration:
+        TargetValue: 50.0
+        ScaleInCooldown: 60
+        ScaleOutCooldown: 60
+        PredefinedMetricSpecification:
+          PredefinedMetricType: DynamoDBWriteCapacityUtilization
+  CustomerReadScalingPolicy:
+    Type: AWS::ApplicationAutoScaling::ScalingPolicy
+    Properties:
+      PolicyName: CustomerWriteAutoScalingPolicy
+      PolicyType: TargetTrackingScaling
+      ScalingTargetId: !Ref CustomersReadCapacity
+      TargetTrackingScalingPolicyConfiguration:
+        TargetValue: 50.0
+        ScaleInCooldown: 60
+        ScaleOutCooldown: 60
+        PredefinedMetricSpecification:
+          PredefinedMetricType: DynamoDBReadCapacityUtilization
+
+### Creating DynamoDB Table CableTvSchedule ###
+  CableTvScheduleTable: 
+    Type: AWS::DynamoDB::Table
+    Properties: 
+      AttributeDefinitions: 
+        - 
+          AttributeName: "CustomerId"
+          AttributeType: "S"
+      KeySchema: 
+        - 
+          AttributeName: "CustomerId"
+          KeyType: "HASH"
+      ProvisionedThroughput: 
+        ReadCapacityUnits: "1"
+        WriteCapacityUnits: "1"
+      TableName: "CableTvSchedule"
+
+### AutoScaling DynamoDB Throughput ###
+  ScheduleWriteCapacity:
+    Type: AWS::ApplicationAutoScaling::ScalableTarget
+    Properties:
+      MaxCapacity: 10
+      MinCapacity: 1
+      ResourceId: !Join
+        - /
+        - - table
+          - !Ref CableTvScheduleTable
+      RoleARN: !GetAtt ScheduleScalingRole.Arn
+      ScalableDimension: dynamodb:table:WriteCapacityUnits
+      ServiceNamespace: dynamodb
+  ScheduleReadCapacity:
+    Type: AWS::ApplicationAutoScaling::ScalableTarget
+    Properties:
+      MaxCapacity: 10
+      MinCapacity: 1
+      ResourceId: !Join
+        - /
+        - - table
+          - !Ref CableTvScheduleTable
+      RoleARN: !GetAtt ScheduleScalingRole.Arn
+      ScalableDimension: dynamodb:table:ReadCapacityUnits
+      ServiceNamespace: dynamodb
+  ScheduleScalingRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          -
+            Effect: "Allow"
+            Principal:
+              Service:
+                - application-autoscaling.amazonaws.com
+            Action:
+              - "sts:AssumeRole"
+      Path: "/"
+      Policies:
+        -
+          PolicyName: "root"
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              -
+                Effect: "Allow"
+                Action:
+                  - "dynamodb:DescribeTable"
+                  - "dynamodb:UpdateTable"
+                  - "cloudwatch:PutMetricAlarm"
+                  - "cloudwatch:DescribeAlarms"
+                  - "cloudwatch:GetMetricStatistics"
+                  - "cloudwatch:SetAlarmState"
+                  - "cloudwatch:DeleteAlarms"
+                Resource: "*"
+  ScheduleWriteScalingPolicy:
+    Type: AWS::ApplicationAutoScaling::ScalingPolicy
+    Properties:
+      PolicyName: CustomerWriteAutoScalingPolicy
+      PolicyType: TargetTrackingScaling
+      ScalingTargetId: !Ref ScheduleWriteCapacity
+      TargetTrackingScalingPolicyConfiguration:
+        TargetValue: 50.0
+        ScaleInCooldown: 60
+        ScaleOutCooldown: 60
+        PredefinedMetricSpecification:
+          PredefinedMetricType: DynamoDBWriteCapacityUtilization
+  ScheduleReadScalingPolicy:
+    Type: AWS::ApplicationAutoScaling::ScalingPolicy
+    Properties:
+      PolicyName: ScheduleWriteAutoScalingPolicy
+      PolicyType: TargetTrackingScaling
+      ScalingTargetId: !Ref ScheduleReadCapacity
+      TargetTrackingScalingPolicyConfiguration:
+        TargetValue: 50.0
+        ScaleInCooldown: 60
+        ScaleOutCooldown: 60
+        PredefinedMetricSpecification:
+          PredefinedMetricType: DynamoDBReadCapacityUtilization
+
+### Creating Role and Lambda Function ###
+  CableTVManagedtechFunctionRole:
+          Type: AWS::IAM::Role
+          Properties:
+            RoleName: CableTv-ManageTechVisitSchedule-role
+            AssumeRolePolicyDocument:
+                Version: "2012-10-17"
+                Statement:
+                   - Effect: Allow
+                     Principal:
+                        Service: lambda.amazonaws.com
+                     Action: sts:AssumeRole
+            ManagedPolicyArns:
+                - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+            Path: /
+            Policies:
+              - PolicyName: SNS_Permissions
+                PolicyDocument:
+                  Version: "2012-10-17"
+                  Statement:
+                    - Effect: Allow
+                      Action: "sns:Publish"
+                      Resource: "*"
+              - PolicyName: DynamoDB_Access
+                PolicyDocument:
+                  Version: "2012-10-17"
+                  Statement:
+                    - Effect: Allow
+                      Action: 
+                       - "dynamodb:BatchGetItem"
+                       - "dynamodb:GetItem"
+                      Resource: !GetAtt CableTvCustomersTable.Arn
+                    - Effect: Allow
+                      Action: "dynamodb:ListTables"
+                      Resource: "*"
+                    - Effect: Allow
+                      Action: 
+                       - "dynamodb:BatchGetItem"
+                       - "dynamodb:PutItem"
+                       - "dynamodb:DeleteItem"
+                       - "dynamodb:GetItem"
+                       - "dynamodb:Query"
+                       - "dynamodb:UpdateItem"
+                      Resource: !GetAtt CableTvScheduleTable.Arn
+
+  CableTVManagedtechFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Runtime: python3.8
+      Role: !GetAtt CableTVManagedtechFunctionRole.Arn
+      FunctionName: "CableTv-ManageTechVisitSchedule"
+      Handler: lambda_function.lambda_handler
+      Code:
+        S3Bucket: !Ref BucketName
+        S3Key: CableTv-ManageTechVisitSchedule.zip
+      Description: "CableTV Managed Tech Schedules"
+      MemorySize: 128
+      Timeout: 3
+
+  CableTVScheduleTechFunctionRole:
+          Type: AWS::IAM::Role
+          Properties:
+              RoleName: CableTv-ScheduleTechVisit-role
+              AssumeRolePolicyDocument:
+                Version: "2012-10-17"
+                Statement:
+                   - Effect: Allow
+                     Principal:
+                        Service: lambda.amazonaws.com
+                     Action: sts:AssumeRole
+              ManagedPolicyArns:
+                - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+              Path: /
+              Policies:
+                - PolicyName: SNS_Permissions
+                  PolicyDocument:
+                    Version: "2012-10-17"
+                    Statement:
+                      - Effect: Allow
+                        Action: "sns:Publish"
+                        Resource: "*"
+                - PolicyName: DynamoDB_Access
+                  PolicyDocument:
+                    Version: "2012-10-17"
+                    Statement:
+                      - Effect: Allow
+                        Action: 
+                         - "dynamodb:BatchGetItem"
+                         - "dynamodb:GetItem"
+                        Resource: !GetAtt CableTvCustomersTable.Arn
+                      - Effect: Allow
+                        Action: 
+                         - "dynamodb:ListTables"
+                         - "dynamodb:ListContributorInsights"
+                         - "dynamodb:ListGlobalTables"
+                         - "dynamodb:ListBackups"
+                         - "dynamodb:PurchaseReservedCapacityOfferings"
+                         - "dynamodb:ListExports"
+                        Resource: "*"
+                      - Effect: Allow
+                        Action: 
+                         - "dynamodb:RestoreTableToPointInTime"
+                         - "dynamodb:CreateTableReplica"
+                         - "dynamodb:DeleteItem"
+                         - "dynamodb:UpdateContributorInsights"
+                         - "dynamodb:UpdateGlobalTable"
+                         - "dynamodb:CreateBackup"
+                         - "dynamodb:DeleteTable"
+                         - "dynamodb:UpdateTableReplicaAutoScaling"
+                         - "dynamodb:UpdateContinuousBackups"
+                         - "dynamodb:PartiQLInsert"
+                         - "dynamodb:GetItem"
+                         - "dynamodb:CreateGlobalTable"
+                         - "dynamodb:EnableKinesisStreamingDestination"
+                         - "dynamodb:BatchGetItem"
+                         - "dynamodb:DisableKinesisStreamingDestination"
+                         - "dynamodb:UpdateTimeToLive"
+                         - "dynamodb:BatchWriteItem"
+                         - "dynamodb:PutItem"
+                         - "dynamodb:PartiQLUpdate"
+                         - "dynamodb:UpdateItem"
+                         - "dynamodb:DeleteTableReplica"
+                         - "dynamodb:CreateTable"
+                         - "dynamodb:UpdateGlobalTableSettings"
+                         - "dynamodb:RestoreTableFromBackup"
+                         - "dynamodb:ExportTableToPointInTime"
+                         - "dynamodb:DeleteBackup"
+                         - "dynamodb:UpdateTable"
+                         - "dynamodb:PartiQLDelete"
+                        Resource: !GetAtt CableTvScheduleTable.Arn
+
+  CableTVScheduleTechFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Runtime: python3.6
+      Role: !GetAtt CableTVScheduleTechFunctionRole.Arn
+      FunctionName: "CableTv-ScheduleTechVisit"
+      Handler: lambda_function.lambda_handler
+      Code:
+        S3Bucket: !Ref BucketName
+        S3Key: CableTv-ScheduleTechVisit.zip
+      Description: "CableTV Schedule Tech"
+      MemorySize: 128
+      Timeout: 3
+
+  CableTVValidateCustomerFunctionRole:
+          Type: AWS::IAM::Role
+          Properties:
+            RoleName: CableTv-ValidateCustomerId-role
+            AssumeRolePolicyDocument:
+                Version: "2012-10-17"
+                Statement:
+                   - Effect: Allow
+                     Principal:
+                        Service: lambda.amazonaws.com
+                     Action: sts:AssumeRole
+            ManagedPolicyArns:
+              - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+            Path: /
+            Policies:
+              - PolicyName: DynamoDB_Access
+                PolicyDocument:
+                  Version: "2012-10-17"
+                  Statement:
+                    - Effect: Allow
+                      Action: "dynamodb:GetItem"
+                      Resource: !GetAtt CableTvCustomersTable.Arn
+                    - Effect: Allow
+                      Action: 
+                       - "dynamodb:ListTables"
+                       - "dynamodb:ListContributorInsights"
+                       - "dynamodb:ListGlobalTables"
+                       - "dynamodb:ListBackups"
+                       - "dynamodb:ListExports"
+                      Resource: "*"
+
+  CableTVValidateCustomerFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Runtime: python3.8
+      Role: !GetAtt CableTVValidateCustomerFunctionRole.Arn
+      FunctionName: "CableTv-ValidateCustomerId"
+      Handler: lambda_function.lambda_handler
+      Code:
+        S3Bucket: !Ref BucketName
+        S3Key: CableTv-ValidateCustomerId.zip
+      Description: "CableTv Validate Customer ID"
+      MemorySize: 128
+      Timeout: 300

@@ -133,6 +133,48 @@
 	"content": "Integrate Amazon Connect with Amazon Lex In this chapter, we will integrate the Amazon Connect instance with the Amazon Lex chatbot so your clients will be able to interact with the Chabot by using their phones.\n"
 },
 {
+	"uri": "/deploy_reports_interface/",
+	"title": "Deploy the reporting interface",
+	"tags": [],
+	"description": "",
+	"content": "Deploy the reporting interface Amazon Connect allows you to use specific APIs to understand what is the status of your queues and also have the ability to stream agent events so you get notified and take actions when there are status changes. In this part of the workshop, we are going to deploy a Web Interface that makes use of these Amazon Connect capabilities to provide you a reporting tool so you can see what is happening to your queues and agents without having to log in in your Amazon Connect instance.\n"
+},
+{
+	"uri": "/deploy_reports_interface/deploy_cloudformation_template/",
+	"title": "Deploy the CloudFormation Template",
+	"tags": [],
+	"description": "",
+	"content": "The first thing we are going to do is to deploy a CloudFormation template that will create all the basic resources that you will need to have the reporting platform. It will create a static website hosted in a S3 bucket, a Cognito UserPool that will be used for authentication, the DynamoDB tables, Lambda functions and API Gateways used to access the data and some additional resources needed.\nThe CloudFormation template is available in this link. Make sure that you download it to your computer and then access the CloudFormation console. In this screen, on the right top corner, click in Create Stack and make sure you select the option With new resources (standard):\nIf don\u0026rsquo;t see the Create stack button on the top right corner of the screen, you can extend the menu on the left side and click in Stacks. It will present all of your stacks and the option create stack will be on this screen.\n In this screen, makw sure you keep all the sections as default, pick the option Upload a template file and select the metricswebsiteCFN.yaml file that you just downloaded. After this, click in Next:\nNow, name you Stack as AmazonConnectReporting and make sure that you enter a valid S3 Bucket name. Please note that S3 bucket names should be unique within the entire AWS ecosystem, so you can use something like -connect-reporting-website. In this screen you will also need the Amazon Connect instance ID. You can get the Amazon Connect instance ID from the Amazon Connect console by clicking in your Instance Alias. In the instance Alias screen you will se the Instance ARN field. The last part of if represents the Amazon Connect instance ARN:\nIn my case, the instance ID is a59181b1-0371-4928-b6c3-50b2ef9b125a. Make sure you are getting the right instance ID and adding it to the CloudFormation Parameters screen. Once you have all information, click in Next:\nIn the following screen, just click Next and on the Review page, make sure that you are selecting the I acknowledge that AWS CloudFormation might create IAM resources. checkbox before clicking in Create stack:\nYou will see a notice saying that the stack was succesfully create when the CloudFormation deployment finishes:\n"
+},
+{
+	"uri": "/deploy_reports_interface/create_cloudfront_distribution/",
+	"title": "Create a CloudFront distribution",
+	"tags": [],
+	"description": "",
+	"content": "In order to serve the content of your newly deployed website, you can be leveraging the S3 bucket static website hosting feature, but a best practice is that you leverage a CloudFront distribution instead. This is going to help you to speed up the delivery of the assets as well as save with data transfer out costs.\nTo do so, acces the CloudFront console. In the CloudFront screen, click in the Create Distribution button.\nAfter clicking on the Create Distribution button, click in Get Started on the next screen. You will see the distribution configuration page. The first think you have to do is to select the bucket provisioned by the CloudFormation template in the Origin Domain Name section:\nAfter selecting the bucket, make sure you change the following options:\n Restrict Bucket Access: Yes Origin Access Identity: Create a New Identity Grant Read Permissions on Bucket: Yes, Update Bucket Policy  After changing the Origin Settings, chante the Viewer Protocol Policy to Redirect HTTP to HTTPS.\nAfter changing these fields, click in Create Distribution button.\nIt will take a few minutes until your distribution is fuly deployed. When it finishes, you will see the status as Deployed on the Amazon CloudFront console.\nWhen the CloudFront distribution deployment is complete, you will be able to get the access URL under the Domain Name field. Copy this domain name and access it with your browser by adding /metrics/metrics.html to the path:\nIn my case, the URL will be davwvknx9ps1s.cloudfront.net/metrics/metrics.html. When acessing it, I\u0026rsquo;ll be able to see the reporting interface.\nThis means that the initial deployment worked fine and we can move to the addition setup pieces.\n"
+},
+{
+	"uri": "/deploy_reports_interface/configure_agent_events_stream/",
+	"title": "Configure Agent Events Stream",
+	"tags": [],
+	"description": "",
+	"content": "Now that we have the web application properly deployed, it is time to configure the Agent Event streams so the Lambda Function can start pulling out this information and updating the database that is accessed by the web application.\nTo do so, the first thing to do is creating an Amazon Kinesis stream. Go to the Amazon Kinesis console and on this screen, make sure that the Kinesis Data Streams is selected and click in Create data stream:\nName your Data Stream as ConnectAgentsData and put the number of open shards 1. After this, click in Create data stream:\nAfter creating the Data Stream, we have to enable the data streaming capabilities in the Amazon Connect instance. To do so, on the Amazon Connect console, click in you connect instance alias and under Data streaming select Enable data streaming and under Agent Events pick the kinesis stream that you just created and click in Save:\nNow, we have to update the Lambda Function that will grab the information from the Kinesis stream and populate the database. To do so, access the AWS Lambda console and look for a Lambda function that starts with AmazonConnectReporting-AgentEventStreamToDDB. Click on the function and on the Function overview section, select the + Add trigger buttom:\nIn the next screen, select Kinesis, pick the Kinesis stream that we just created, named ConnectAgentsData and click in Add:\nNote that it might take a couple of minutes to get your trigger properly created. You will be able to see the streams status on the Lambda configuration page. When the streams changes to Enabled it means that the configuration is finished:\n"
+},
+{
+	"uri": "/deploy_reports_interface/configure_queue_status_crawling/",
+	"title": "Configure Queue Stats",
+	"tags": [],
+	"description": "",
+	"content": "The final step for us to have all the information being populated in the new interface is to configure the application so it can start obtaining information from the Amazon Connect queues. To do so, the first thing we need to do is to get the Queue ARN from the Amazon Connect instance.\nAccess you Amazon Connect instance and navigate to the Queues on the left side menu:\nThere, click in the Queue that you want to get metrics. In this case, we are going to proceed with the Basic Queue. Expand the Show additional queue information and copy the ARN from there:\nNow, with this information, go to the DynamoDB console. On the left hand menu, click in Tables and select the table RealTimeQueueStats. On the table page, click in the View items button:\nOn the Items page, click in the Create item button and on the following screen, you should add the following JSON object, replacing the \u0026lt;QUEUE_ARN\u0026gt; with the ARN that we just got from your queue. After adding the JSON file, you can go ahead and click in the Create item button:\n{ \u0026quot;queue\u0026quot;: \u0026quot;\u0026lt;QUEUE_ARN\u0026gt;\u0026quot;, \u0026quot;queueName\u0026quot;: \u0026quot;Basic Queue\u0026quot; }  "
+},
+{
+	"uri": "/deploy_reports_interface/validating_application/",
+	"title": "Validating the application",
+	"tags": [],
+	"description": "",
+	"content": "Now that we have completed all the pre-requisites to get the reporting platform working, it is time to valide it\u0026rsquo;s functionality.\nTo do so, access the reporting platform web interface, using the CloudFront URL (don\u0026rsquo;t forget to add the /metrics/metrics.html in the end). You will be prompted with a username an password screen. On that, use the following data:\nusernamme: sjobs password: password  After logging in the application, you will be able to see data about your queue and your agents. Try changing the agent status and placing a few calls that will be directed to the queue and you should see everything on this screen:\n"
+},
+{
 	"uri": "/categories/",
 	"title": "Categories",
 	"tags": [],
