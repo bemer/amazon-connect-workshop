@@ -7,14 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="/start_the_workshop/saml_configuration/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Configure the AWS SSO for Agents</title>
+      <title>Configure AWS SSO for Agents</title>
       <link>/start_the_workshop/saml_configuration/configure_aws_sso_for_agents/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/start_the_workshop/saml_configuration/configure_aws_sso_for_agents/</guid>
-      <description>In this module we are going to enable the AWS Single Sign-On (SSO) and configure it as the identity provider for our Amazon Connect Instance.
-Note that for the purpose of this workshop we will be leveraging the AWS SSO as the identity provider to authenticate our users in the Amazon Connect instance, but you can use different tools as stated in the documentation.
- The first step is to enable the AWS SSO.</description>
+      <description>In this module we are going to enable AWS Single Sign-On (SSO) and configure it as the identity provider for our Amazon Connect Instance.
+Note that for the purpose of this workshop we will be leveraging AWS SSO as the identity provider to authenticate our users in the Amazon Connect instance, but you can use different tools as stated in the documentation.
+ The first step is to enable AWS SSO.</description>
     </item>
     
     <item>
@@ -23,17 +23,17 @@ Note that for the purpose of this workshop we will be leveraging the AWS SSO as 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/start_the_workshop/saml_configuration/configure_the_iam/</guid>
-      <description>After configuring the AWS SSO, it is time to get back to the IAM and create an Identity provider and proper IAM Policy and IAM Role. The IAM identity provider is used to configure AWS SSO as an IdP for SAML 2.0 federation while the IAM policy and role are used for the directory users to assume an IAM role and access an Amazon Connect instance.
-In the IAM console, in the Identity providers menu, click in the button Create Provider:</description>
+      <description>After configuring AWS SSO, it is time to get back to the IAM and create an Identity provider, IAM Policy, and IAM Role. The IAM identity provider is used to configure AWS SSO as an IdP for SAML 2.0 federation. The IAM policy and role are provide the role and permissions that allow users to access the Amazon Connect instance.
+In the IAM console, in the Identity providers menu, select Create Provider:</description>
     </item>
     
     <item>
-      <title>Create Connect agents</title>
+      <title>Create Amazon Connect agents</title>
       <link>/start_the_workshop/saml_configuration/create_connect_agents/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/start_the_workshop/saml_configuration/create_connect_agents/</guid>
-      <description>After configuring the SSO, it is time to go ahead and create the firt Amazon Connect agents. With the SSO setup, users are created and defined in the Connect instance but all the password management will happen through the SSO. Let&amp;rsquo;s then create a few Connect users and see how this integration looks like.
+      <description>After configuring AWS SSO, it is time to go ahead and create the first Amazon Connect agents. With AWS SSO setup, users are created and defined in the Connect instance but all password management will happen through the AWS SSO. Let&amp;rsquo;s then create a few Connect users and see how this integration looks like.
 The first step here is to access your Amazon Connect instance with your administrator account (that we created in the previous lab) and create a new user.</description>
     </item>
     
@@ -43,18 +43,19 @@ The first step here is to access your Amazon Connect instance with your administ
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/start_the_workshop/saml_configuration/configure_aws_sso_for_admins/</guid>
-      <description>After creating a SSO application that will be used by your agents, it is time to create another application that will provide access to the Connect admin console. We will be repeating the previous steps with a couple of changes.
-Start by acessing the AWS SSO applications page and adding a new application. Click in the Add application button, select Amazon Connect and click in the Add application buton again.</description>
+      <description>After creating an SSO application that will be used by your agents, it is time to create another application that will provide access to the Amazon Connect admin console. We will be repeating the previous steps with a couple of changes.
+Start by acessing the AWS SSO applications page and adding a new application. select Add application , Amazon Connect and then choose Add application.
+Name this application Amazon Connect - Admin.</description>
     </item>
     
     <item>
-      <title>Create the Connect Admin</title>
+      <title>Create the Amazon Connect Admin user</title>
       <link>/start_the_workshop/saml_configuration/create_admin_user/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/start_the_workshop/saml_configuration/create_admin_user/</guid>
-      <description>No that you already have the SSO Application for the admin user, let&amp;rsquo;s go ahead and create the first admin user that we will be using during the workshop. Access your Amazon Connect instance using the link available in the Amazon Connect console.
-In case you&amp;rsquo;re not able to login with the first user, because you have enabled the SSO, you can click in your connect instance name and use the Emergency access link.</description>
+      <description>Now that the Admin User application has been created, let&amp;rsquo;s configure the admin users for this workshop. Access your Amazon Connect instance using the link available in the Amazon Connect console.
+After logging in, choose User management menu on the left side and then select Add new users. Proceed to create a new user and use Admin for the first name, User for the last name and admin-user@amazon-connect-workshop.com as the login name.</description>
     </item>
     
   </channel>

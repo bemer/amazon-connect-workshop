@@ -13,20 +13,20 @@
     <title>Configure the AWS SSO for Admins :: Amazon Connect Workshop</title>
 
     
-    <link href="../../../css/nucleus.css?1622746769" rel="stylesheet">
-    <link href="../../../css/fontawesome-all.min.css?1622746769" rel="stylesheet">
-    <link href="../../../css/hybrid.css?1622746769" rel="stylesheet">
-    <link href="../../../css/featherlight.min.css?1622746769" rel="stylesheet">
-    <link href="../../../css/perfect-scrollbar.min.css?1622746769" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1622746769" rel="stylesheet">
-    <link href="../../../css/atom-one-dark-reasonable.css?1622746769" rel="stylesheet">
-    <link href="../../../css/theme.css?1622746769" rel="stylesheet">
-    <link href="../../../css/hugo-theme.css?1622746769" rel="stylesheet">
+    <link href="../../../css/nucleus.css?1624547319" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1624547319" rel="stylesheet">
+    <link href="../../../css/hybrid.css?1624547319" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1624547319" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1624547319" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1624547319" rel="stylesheet">
+    <link href="../../../css/atom-one-dark-reasonable.css?1624547319" rel="stylesheet">
+    <link href="../../../css/theme.css?1624547319" rel="stylesheet">
+    <link href="../../../css/hugo-theme.css?1624547319" rel="stylesheet">
     
-      <link href="../../../css/theme-mine.css?1622746769" rel="stylesheet">
+      <link href="../../../css/theme-mine.css?1624547319" rel="stylesheet">
     
 
-    <script src="../../../js/jquery-3.3.1.min.js?1622746769"></script>
+    <script src="../../../js/jquery-3.3.1.min.js?1624547319"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -73,10 +73,10 @@
     <meta name="msapplication-wide310x150logo" content="/icons/mstile-310x150.png" />
     <meta name="msapplication-square310x310logo" content="/icons/mstile-310x310.png" />
 
-    <link href="../../../mermaid/mermaid.css?1622746769" type="text/css" rel="stylesheet" />
-    <link href="../../../css/jquery-ui.min.css?1622746769" rel="stylesheet">
-    <script src="../../../js/jquery-ui-1.12.1.min.js?1622746769"></script>
-    <script src="../../../mermaid/mermaid.min.js?1622746769"></script>
+    <link href="../../../mermaid/mermaid.css?1624547319" type="text/css" rel="stylesheet" />
+    <link href="../../../css/jquery-ui.min.css?1624547319" rel="stylesheet">
+    <script src="../../../js/jquery-ui-1.12.1.min.js?1624547319"></script>
+    <script src="../../../mermaid/mermaid.min.js?1624547319"></script>
     <script>
 	var config = {
         startOnLoad:true,
@@ -105,14 +105,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../../js/lunr.min.js?1622746769"></script>
-<script type="text/javascript" src="../../../js/auto-complete.js?1622746769"></script>
+<script type="text/javascript" src="../../../js/lunr.min.js?1624547319"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1624547319"></script>
 <script type="text/javascript">
     
         var baseurl = "";
     
 </script>
-<script type="text/javascript" src="../../../js/search.js?1622746769"></script>
+<script type="text/javascript" src="../../../js/search.js?1624547319"></script>
 
     
   </div>
@@ -257,9 +257,9 @@
  
   
     
-      <li data-nav-id="/start_the_workshop/saml_configuration/configure_aws_sso_for_agents/" title="Configure the AWS SSO for Agents" class="dd-item ">
+      <li data-nav-id="/start_the_workshop/saml_configuration/configure_aws_sso_for_agents/" title="Configure AWS SSO for Agents" class="dd-item ">
         <a href="../../../start_the_workshop/saml_configuration/configure_aws_sso_for_agents/">
-        Configure the AWS SSO for Agents
+        Configure AWS SSO for Agents
         
         </a>
     </li>
@@ -295,9 +295,9 @@
  
   
     
-      <li data-nav-id="/start_the_workshop/saml_configuration/create_connect_agents/" title="Create Connect agents" class="dd-item ">
+      <li data-nav-id="/start_the_workshop/saml_configuration/create_connect_agents/" title="Create Amazon Connect agents" class="dd-item ">
         <a href="../../../start_the_workshop/saml_configuration/create_connect_agents/">
-        Create Connect agents
+        Create Amazon Connect agents
         
         </a>
     </li>
@@ -333,9 +333,9 @@
  
   
     
-      <li data-nav-id="/start_the_workshop/saml_configuration/create_admin_user/" title="Create the Connect Admin" class="dd-item ">
+      <li data-nav-id="/start_the_workshop/saml_configuration/create_admin_user/" title="Create the Amazon Connect Admin user" class="dd-item ">
         <a href="../../../start_the_workshop/saml_configuration/create_admin_user/">
-        Create the Connect Admin
+        Create the Amazon Connect Admin user
         
         </a>
     </li>
@@ -806,29 +806,29 @@
 
 
 
-<p>After creating a SSO application that will be used by your agents, it is time to create another application that will provide access to the Connect admin console. We will be repeating the previous steps with a couple of changes.</p>
-<p>Start by acessing the <a href="https://console.aws.amazon.com/singlesignon/home#/applications">AWS SSO applications page</a> and adding a new application. Click in the <strong>Add application</strong> button, select <em>Amazon Connect</em> and click in the <strong>Add application</strong> buton again.</p>
-<p>Name this application <strong>Amazon Connect - Admin</strong>, download the metadata file available in the <em>AWS SSO Metadata</em> section and in the <strong>Relay state</strong> field you should add the following URL:</p>
+<p>After creating an SSO application that will be used by your agents, it is time to create another application that will provide access to the Amazon Connect admin console. We will be repeating the previous steps with a couple of changes.</p>
+<p>Start by acessing the <a href="https://console.aws.amazon.com/singlesignon/home#/applications">AWS SSO applications page</a> and adding a new application. select <strong>Add application</strong> , <em>Amazon Connect</em> and then choose <strong>Add application</strong>.</p>
+<p>Name this application <strong>Amazon Connect - Admin</strong>. Download the metadata file available in the <em>AWS SSO Metadata</em> section and in the <strong>Relay state</strong> field you should add the following URL:</p>
 <pre><code>https://&lt;region-id&gt;.console.aws.amazon.com/connect/federate/&lt;instance-id&gt;
 </code></pre>
-<p>Note that this URL is different from the previous one, where it provides access to the Amazon Connect administrator dashboard instead of redirecting the users to the softfone interface. Make sure you are replacing the <em>&lt;region-id&gt;</em> and the <em>&lt;intance-id&gt;</em> with your information.</p>
-<p>After downloading the metadata file and changing the <strong>Relay state</strong> URL field, click in <strong>Save changes</strong>.</p>
-<p>Now, access the <a href="https://console.aws.amazon.com/iam/home">AWS IAM console</a>, click in <strong>Identity providers</strong> on the left menu and create a new provider by clicking in the <strong>Create provider</strong> button.</p>
-<p>For the provider type, select <strong>SAML</strong>, name it <strong>AmazonConnectAdminAccess</strong>, upload the most recent metadata file and click in <strong>Next step</strong>:</p>
+<p>Note that this URL is different from the previous one, where it provides access to the Amazon Connect administrator dashboard instead of redirecting the users to the softphone interface. Make sure you are replacing the <em>&lt;region-id&gt;</em> and the <em>&lt;intance-id&gt;</em> with your information.</p>
+<p>After downloading the metadata file and changing the <strong>Relay state</strong> URL field, choose <strong>Save changes</strong>.</p>
+<p>Now, access the <a href="https://console.aws.amazon.com/iam/home">AWS IAM console</a>, select <strong>Identity providers</strong> from the navigation menu and select <strong>Create provider</strong> .</p>
+<p>For the provider type, select <strong>SAML</strong>, name it <strong>AmazonConnectAdminAccess</strong>, upload the most recent metadata file and choose <strong>Next step</strong>:</p>
 <p><img src="../../../images/enable-aws-sso/iam_create_admin_provider.png" alt="CreateIdp"></p>
-<p>After validating the information, click in <strong>Create</strong>.</p>
-<p>Now, access the <a href="https://console.aws.amazon.com/iam/home#/roles">AWS IAM Roles</a> page and click in the button <strong>Create role</strong> to create the role that will be used by the new SSO application. In this screen, select <strong>SAML 2.0 federation</strong> as the Role type and make sure you select the <strong>AmazonConnectAdminAccess</strong> SAML provider. Select <strong>Allow programmatic and AWS Management Console access</strong> and click in the <strong>Next Permissions</strong> button:</p>
+<p>After validating the information, select <strong>Create</strong>.</p>
+<p>Now, access the <a href="https://console.aws.amazon.com/iam/home#/roles">AWS IAM Roles</a> page and select <strong>Create role</strong> to create the role that will be used by the new AWS SSO application. In this screen, select <strong>SAML 2.0 federation</strong> as the Role type and make sure you select the <strong>AmazonConnectAdminAccess</strong> SAML provider. Select <strong>Allow programmatic and AWS Management Console access</strong> and choose <strong>Next Permissions</strong> :</p>
 <p><img src="../../../images/enable-aws-sso/create_iam_admin_role.png" alt="CreateIAMAdminRole"></p>
-<p>In the following screen, select the <strong>AmazonConnectSSOPolicy</strong> policy and click in <strong>Next tags</strong>. On the tags screen, click in <strong>Next review</strong>.</p>
-<p>Name your role <strong>AmazonConnectAdminAccessRole</strong> and click in <strong>Create role</strong>.</p>
-<p>After creating the IAM Role, access the <a href="https://console.aws.amazon.com/singlesignon/home#/applications">AWS SSO applications page</a> and click in the <strong>Amazon Connect - Admin</strong> application. In the application page, select the <strong>Attribute mappings</strong> tab and create a new attribute with the following content:</p>
+<p>In the following screen, select the <strong>AmazonConnectSSOPolicy</strong> policy and choose <strong>Next tags</strong>. On the tags screen, select <strong>Next review</strong>.</p>
+<p>Name your role <strong>AmazonConnectAdminAccessRole</strong> and choose <strong>Create role</strong>.</p>
+<p>After creating the IAM Role, access the <a href="https://console.aws.amazon.com/singlesignon/home#/applications">AWS SSO applications page</a> and choose the <strong>Amazon Connect - Admin</strong> application. In the application page, select the <strong>Attribute mappings</strong> tab and create a new attribute with the following content:</p>
 <pre><code>Attribute: https://aws.amazon.com/SAML/Attributes/Role
 Value: &lt;IAM role ARN&gt;,&lt;IAM identity provider ARN&gt;
 </code></pre>
 <p>The Value field will be similar to:</p>
 <pre><code>arn:aws:iam::123456789012:role/AmazonConnectAdminAccessRole,arn:aws:iam::123456789012:saml-provider/AmazonConnectAdminAccess
 </code></pre>
-<p>After changing this information, click in the <strong>Save changes</strong> button.</p>
+<p>After changing this information, choose <strong>Save changes</strong> .</p>
 
 
 <footer class=" footline" >
@@ -1272,10 +1272,10 @@ Value: &lt;IAM role ARN&gt;,&lt;IAM identity provider ARN&gt;
 	 
 	 
 		
-			<a class="nav nav-prev" href="../../../start_the_workshop/saml_configuration/create_connect_agents/" title="Create Connect agents"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="../../../start_the_workshop/saml_configuration/create_connect_agents/" title="Create Amazon Connect agents"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="../../../start_the_workshop/saml_configuration/create_admin_user/" title="Create the Connect Admin" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="../../../start_the_workshop/saml_configuration/create_admin_user/" title="Create the Amazon Connect Admin user" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1285,19 +1285,19 @@ Value: &lt;IAM role ARN&gt;,&lt;IAM identity provider ARN&gt;
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1622746769"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1622746769"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1622746769"></script>
-    <script src="../../../js/jquery.sticky.js?1622746769"></script>
-    <script src="../../../js/featherlight.min.js?1622746769"></script>
-    <script src="../../../js/highlight.pack.js?1622746769"></script>
+    <script src="../../../js/clipboard.min.js?1624547319"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1624547319"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1624547319"></script>
+    <script src="../../../js/jquery.sticky.js?1624547319"></script>
+    <script src="../../../js/featherlight.min.js?1624547319"></script>
+    <script src="../../../js/highlight.pack.js?1624547319"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1622746769"></script>
-    <script src="../../../js/learn.js?1622746769"></script>
-    <script src="../../../js/hugo-learn.js?1622746769"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1624547319"></script>
+    <script src="../../../js/learn.js?1624547319"></script>
+    <script src="../../../js/hugo-learn.js?1624547319"></script>
 
-    <link href="../../../mermaid/mermaid.css?1622746769" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1622746769"></script>
+    <link href="../../../mermaid/mermaid.css?1624547319" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1624547319"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
