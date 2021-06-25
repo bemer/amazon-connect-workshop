@@ -60,7 +60,7 @@
 	"title": "Federation with AWS SSO and Amazon Connect",
 	"tags": [],
 	"description": "",
-	"content": "Federation with AWS Single Sign-On and Amazon Connect In this Chapter, we will guide you through the process of configuring AWS Single Sign-on as the identity provider for the previouly created Amazon Connect instance.\n"
+	"content": "Federation with AWS Single Sign-On and Amazon Connect In this Chapter, we will guide you through the process of configuring AWS Single Sign-on as the identity provider for the previously created Amazon Connect instance.\n"
 },
 {
 	"uri": "/start_the_workshop/",
